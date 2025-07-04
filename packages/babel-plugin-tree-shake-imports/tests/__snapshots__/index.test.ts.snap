@@ -1,0 +1,79 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`babel-plugin-tree-shake-imports > Should keep unused imports 1`] = `
+"import { Bar } from "foo";
+import { bar as _bar } from "foo/bar";
+_bar;"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should not tree-shake when not desired 1`] = `
+"import { bar as _bar } from "foo/bar";
+import { Bar } from "bar";
+_bar;
+Bar.baz;"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should skip fishy properties 1`] = `
+"import { Foo } from "foo";
+import { bar as _bar } from "foo/bar";
+_bar;
+Foo["bar"];"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should skip irrelevant references 1`] = `
+"import { Foo } from "foo";
+function example() {
+  const Foo = {};
+  return Foo.bar;
+}
+;"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should tree-shake aliased imports 1`] = `
+"import { bar as _bar } from "foo/bar";
+_bar;"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should tree-shake default imports 1`] = `
+"import { bar as _bar } from "foo/bar";
+_bar;"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should tree-shake into default import 1`] = `
+"import _bar from "foo/bar";
+_bar;"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should tree-shake multiple references 1`] = `
+"import { baz as _baz } from "foo/baz";
+import { bar as _bar } from "foo/bar";
+_bar;
+_bar;
+_baz;
+_baz;"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should tree-shake named imports 1`] = `
+"import { bar as _bar } from "foo/bar";
+_bar;"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should tree-shake nested imports 1`] = `
+"import { baz as _baz } from "foo/bar/baz";
+_baz;"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should tree-shake string-literal imports 1`] = `
+"import { bar as _bar } from "foo/bar";
+_bar;"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should tree-shake using alias 1`] = `
+"import { Bar as _baz } from "foo/bar/baz";
+_baz;"
+`;
+
+exports[`babel-plugin-tree-shake-imports > Should tree-shake wildcard imports 1`] = `
+"import { bar as _bar } from "foo/bar";
+_bar;"
+`;
